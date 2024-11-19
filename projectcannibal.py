@@ -34,3 +34,26 @@ def getstates (state, c):
                     if is_valid_state(new_k_bal, new_v_bal, new_k_jobb, new_v_jobb, c):
                         allapot_valtozas.append((new_k_bal, new_v_bal, new_k_jobb, new_v_jobb, "bal"))
     return allapot_valtozas
+
+
+def megoldas (c=1):
+    # A feladat megoldása, ha az erőfölény (C) = 1
+    kezdo_allapot = (3, 3, 0, 0, "bal") 
+    cel_allapot = (0, 0, 3, 3, "jobb") # Ez lenne a cél: 3 kannibál és 3 vegetáriánus a jobb parton 
+    visited = set()
+    queue = [(kezdo_allapot, [])]  # Lista mint sor: (jelenlegi állapot, útvonal)
+
+    while queue:
+        jelen_allapot, utvonal = queue.pop(0)  # Az első elemet vesszük ki (FIFO)
+        if jelen_allapot in visited:
+            continue
+        visited.add(jelen_allapot)
+        
+        if jelen_allapot == cel_allapot:
+            return utvonal + [current_state]
+        
+        for next_state in get_next_states(current_state, c):
+            queue.append((next_state, utvonal + [current_state]))
+    
+    return None
+
