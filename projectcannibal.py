@@ -52,7 +52,7 @@ def kidolgozas (c=1):
         if jelen_allapot == cel_allapot:
             return utvonal + [current_state]
         
-        for next_state in get_next_states(current_state, c):
+        for next_state in allapot_valtozas(current_state, c):
             queue.append((next_state, utvonal + [current_state]))
     
     return None
