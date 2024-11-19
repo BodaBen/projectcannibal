@@ -36,7 +36,7 @@ def getstates (state, c):
     return allapot_valtozas
 
 
-def megoldas (c=1):
+def kidolgozas (c=1):
     # A feladat megoldása, ha az erőfölény (C) = 1
     kezdo_allapot = (3, 3, 0, 0, "bal") 
     cel_allapot = (0, 0, 3, 3, "jobb") # Ez lenne a cél: 3 kannibál és 3 vegetáriánus a jobb parton 
@@ -56,4 +56,13 @@ def megoldas (c=1):
             queue.append((next_state, utvonal + [current_state]))
     
     return None
+
+megoldas = kidolgozas()
+if megoldas:
+    print("Megoldás lépései:")
+    for i, step in enumerate(megoldas):
+        print(f"Lépés {i}: Kannibálok (bal parton): {step[0]}, Vegetáriánusok (bal parton): {step[1]}, "
+              f"Kannibálok (jobb parton): {step[2]}, Vegetáriánusok (jobb parton): {step[3]}, Csónak: {step[4]}")
+else:
+    print("Nincs megoldás.")
 
