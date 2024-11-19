@@ -22,7 +22,7 @@ def getstates (state, c):
                     new_k_jobb = k_jobb + k_in_csonak
                     new_v_jobb = v_jobb + v_in_csonak
                     if validstate(new_k_bal, new_v_bal, new_k_jobb, new_v_jobb, c):
-                        allapot_valtozas.append((new_c_left, new_v_left, new_c_right, new_v_right, "right"))
+                        allapot_valtozas.append((new_k_bal, new_v_bal, new_k_jobb, new_v_jobb, "right"))
     else:  # A csónak a jobb parton van
         for k_in_csonak in range(3):  # kannibálok számának meghatározása: 0, 1 vagy 2
             for v_in_csonak in range(3 - k_in_csonak):  # 0, 1, vagy 2 vegetáriánus
@@ -50,10 +50,10 @@ def kidolgozas (c=1):
         visited.add(jelen_allapot)
         
         if jelen_allapot == cel_allapot:
-            return utvonal + [current_state]
+            return utvonal + [jelen_allapot]
         
-        for next_state in allapot_valtozas(current_state, c):
-            queue.append((next_state, utvonal + [current_state]))
+        for next_state in getstates(jelen_allapot, c):
+            queue.append((next_state, utvonal + [jelen_allapot]))
     
     return None
 
