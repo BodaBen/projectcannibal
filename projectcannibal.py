@@ -15,7 +15,7 @@ def getstates (state, c):
     allapot_valtozas = []
     if csonak == "bal":  # A csónak a bal parton van
         for k_in_csonak in range(3):  # kannibálok számának meghatározássa
-            for v_in_csonak in range(3 - c_in_csonak):  # vegetáriánusok száma a kannibálokat figyelembe véve
+            for v_in_csonak in range(3 - k_in_csonak):  # vegetáriánusok száma a kannibálokat figyelembe véve
                 if k_in_csonak + v_in_csonak > 0 and k_in_csonak + v_in_csonak <= 2:  # A csónak kapacitása
                     new_k_bal = k_bal - k_in_csonak
                     new_v_bal = v_bal - v_in_csonak
@@ -31,7 +31,7 @@ def getstates (state, c):
                     new_v_bal = v_bal + v_in_csonak
                     new_k_jobb = k_jobb - k_in_csonak
                     new_v_jobb = v_jobb - v_in_csonak
-                    if is_valid_state(new_k_bal, new_v_bal, new_k_jobb, new_v_jobb, c):
+                    if validstate(new_k_bal, new_v_bal, new_k_jobb, new_v_jobb, c):
                         allapot_valtozas.append((new_k_bal, new_v_bal, new_k_jobb, new_v_jobb, "bal"))
     return allapot_valtozas
 
