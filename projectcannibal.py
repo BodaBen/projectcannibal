@@ -7,10 +7,6 @@ def validstate(k_bal, v_bal, k_jobb, v_jobb, c):
     return True
 
 def getstates (state, c):
-    """
-    Generálja a lehetséges következő állapotokat egy adott állapotból.
-    Figyelembe veszi, hogy a csónakban utazók a túlsó parton kiszállnak.
-    """
     k_bal, v_bal, k_jobb, v_jobb, csonak = state
     allapot_valtozas = []
     if csonak == "bal":  # A csónak a bal parton van
